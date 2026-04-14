@@ -2,22 +2,23 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity, TextInput } from 'r
 import {useState} from 'react';
 
 export default function App() {
+  const [task,setTask] = useState ('')
 
-const [tarefas,setTarefas] = [
+const [tarefas,setTarefas] = useState ([
 {id:"1",titulo:"aprender Git"},
 {id:"2",titulo:"aprender fazer Commit"},
   {id:"3",titulo:"aprender utilizar o Github"},
   {id:"4",titulo:"Criar um novo commit"},
-]
-
-const [novaTarefa,setnovaTarefa] = useState('')
+])
 
 function addTarefas(){
   const novaTarefa = {
     id : String(Date.now()),
     titulo : task
 };
-  setTarefas([...tarefas,novaTarefa])
+  setTarefas([...tarefas,novaTarefa]);
+  setTask("")
+
 }
 
   return (
@@ -38,8 +39,8 @@ function addTarefas(){
 
       <TextInput
       style={styles.input}
-      value={novaTarefa}
-      onChangeText={ (texto)=> setnovaTarefa(texto)}
+      value={task}
+      onChangeText={ (texto)=> setTask(texto)}
       placeholder="Digite uma tarefa"
       textAlign='center'
       />
